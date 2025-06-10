@@ -4,18 +4,12 @@ const pauseButton = document.getElementById('pause-button');
 const musicAnimation = document.getElementById('music-animation');
 
 const playlist = [
-  'music/Henrique e Juliano - Realidade ou Fantasia.mp3',
-  'music/Delacruz - Sunshine.mp3',
-  'music/Matheus & Kauan - Meu Oxigênio.mp3',
-  'music/Usher - My Boo.mp3',
-  'music/Afrodite - Delacruz e IZA.mp3',
-  'music/Delacruz - Vício de amor.mp3',
-  'music/Destinys Child - Dangerously In Love.mp3',
-  'music/Filipe Ret - Amor Livre.mp3',
-  'music/Jaymes Young - Infinity.mp3',
-  'music/Justin Bieber - One time acoust.mp3',
-  'music/Justin Timberlake - Mirrors.mp3',
-  'music/Luiz Lins - A Música Mais Triste do Ano.mp3'
+  'music/Bruna Karla - Que Bom Você Chegou.mp3',
+  'music/Lindo Momento - Julliany Souza Letra.mp3',
+  'music/Eu Te Amo -  Melk Villar e Paloma Possi.mp3',
+  'music/Marcela Taís - Clipe： Escolhi te esperar.mp3',
+  'music/Mariana Aguiar - Seremos Um.mp3',
+  'music/Meu grande amor - Lara Fabian.mp3',
 ];
 
 let currentTrack = 0;
