@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nosso Amor 💖</title>
+  <link rel="stylesheet" href="style/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <canvas id="starry-sky"></canvas>
+  <div id="moon"></div>
+
+  <header>
+    <h1>Geraldim & Gisele</h1> <h1>💑</h1>
+    <br>
+  </header>
+  <br>
+ 
+
+   <div id="comeco">
+    <h2>Uma data muito importante:</h2>
+    <br>
+  </div>
+   <div class="heart">
+    <div class="content">
+      <p><br>23 
+      <br>junho
+      2020</p>
+    </div>
+  </div>
+
+  <section class="timer" id="timer">
+    Estamos Casados há...
+  </section>
+
+  
+  <p id="current-track">Tocando agora: nenhuma musica</p>
+  <div id="music-animation" style="display: none;">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+  </div>
+
+  <div id="music-controls">
+    
+    <button onclick="prevMusic()">⏮️</button>
+    <button id="play-button" onclick="playMusic()">▶️</button>
+    <button id="pause-button" onclick="pauseMusic()" style="display:none;">⏸️</button>
+    <button onclick="nextMusic()">⏭️</button>
+  </div>
+
+  <audio id="background-music">
+        Seu navegador não suporta áudio.
+  </audio>
+
+  <br>
+  <div class="carousel-frame">
+  <div class="carousel-container">
+    <button class="carousel-button left" onclick="prevSlide()">&#10094;</button>
+    <div class="carousel-track-container">
+    <div class="carousel-track" id="carousel">
+      <img src="images/foto1.jpg" alt="Foto 1 de nós dois" />
+      <img src="images/foto2.jpg" alt="Foto 2 de nós dois" />
+      <img src="images/foto3.jpg" alt="Foto 3 de nós dois" />
+      <img src="images/foto4.jpg" alt="Foto 4 de nós dois" />
+      <img src="images/foto5.jpg" alt="Foto 5 de nós dois" />
+      <img src="images/foto6.jpg" alt="Foto 6 de nós dois" />
+      <img src="images/foto7.jpg" alt="Foto 7 de nós dois" />
+      <img src="images/foto8.jpg" alt="Foto 8 de nós dois" />
+      <img src="images/foto9.jpg" alt="Foto 9 de nós dois" />
+      <img src="images/foto10.jpg" alt="Foto 10 de nós dois" />
+      <img src="images/foto11.jpg" alt="Foto 11 de nós dois" />
+      <img src="images/foto12.jpg" alt="Foto 12 de nós dois" />
+      <img src="images/foto13.jpg" alt="Foto 13 de nós dois" />
+      <img src="images/foto14.jpg" alt="Foto 14 de nós dois" />
+      <img src="images/foto15.jpg" alt="Foto 15 de nós dois" />
+    <img src="images/foto16.jpg" alt="Foto 16 de nós dois" />
+    <img src="images/foto17.jpg" alt="Foto 17 de nós dois" />
+    <img src="images/foto18.jpg" alt="Foto 18 de nós dois" />
+    <img src="images/foto19.jpg" alt="Foto 19 de nós dois" />
+    <img src="images/foto20.jpg" alt="Foto 20 de nós dois" />
+    <img src="images/foto21.jpg" alt="Foto 21 de nós dois" />
+    <img src="images/foto22.jpg" alt="Foto 22 de nós dois" />
+    <img src="images/foto23.jpg" alt="Foto 23 de nós dois" />
+    <img src="images/foto24.jpg" alt="Foto 24 de nós dois" />
+    <img src="images/foto25.jpg" alt="Foto 25 de nós dois" />
+    <img src="images/foto26.jpg" alt="Foto 26 de nós dois" />
+    <img src="images/foto27.jpg" alt="Foto 27 de nós dois" />
+    <img src="images/foto28.jpg" alt="Foto 28 de nós dois" />
+    <img src="images/foto29.jpg" alt="Foto 29 de nós dois" />
+    <img src="images/foto30.jpg" alt="Foto 30 de nós dois" />
+    <img src="images/foto31.jpg" alt="Foto 31 de nós dois" />
+    <img src="images/foto32.jpg" alt="Foto 32 de nós dois" />
+    <img src="images/foto33.jpg" alt="Foto 33 de nós dois" />
+    <img src="images/foto34.jpg" alt="Foto 34 de nós dois" />
+    <img src="images/foto35.jpg" alt="Foto 35 de nós dois" />
+    <img src="images/foto36.jpg" alt="Foto 36 de nós dois" />
+    <img src="images/foto37.jpg" alt="Foto 37 de nós dois" />
+    <img src="images/foto38.jpg" alt="Foto 38 de nós dois" />
+    <img src="images/foto39.jpg" alt="Foto 39 de nós dois" />
+    <img src="images/foto40.jpg" alt="Foto 40 de nós dois" />
+    <img src="images/foto41.jpg" alt="Foto 41 de nós dois" />
+    <img src="images/foto42.jpg" alt="Foto 42 de nós dois" />
+    <img src="images/foto43.jpg" alt="Foto 43 de nós dois" />
+    <img src="images/foto44.jpg" alt="Foto 44 de nós dois" />
+    <img src="images/foto45.jpg" alt="Foto 45 de nós dois" />
+    <img src="images/foto46.jpg" alt="Foto 46 de nós dois" />
+    <img src="images/foto47.jpg" alt="Foto 47 de nós dois" />
+    <img src="images/foto48.jpg" alt="Foto 48 de nós dois" />
+    <img src="images/foto49.jpg" alt="Foto 49 de nós dois" />
+    <img src="images/foto50.jpg" alt="Foto 50 de nós dois" />
+    <img src="images/foto51.jpg" alt="Foto 51 de nós dois" />
+    <img src="images/foto52.jpg" alt="Foto 52 de nós dois" />
+    <img src="images/foto53.jpg" alt="Foto 53 de nós dois" />
+    <img src="images/foto54.jpg" alt="Foto 54 de nós dois" />
+    <img src="images/foto55.jpg" alt="Foto 55 de nós dois" />
+    <img src="images/foto56.jpg" alt="Foto 56 de nós dois" />
+    <img src="images/foto57.jpg" alt="Foto 57 de nós dois" />
+    <img src="images/foto58.jpg" alt="Foto 58 de nós dois" />
+    <img src="images/foto59.jpg" alt="Foto 59 de nós dois" />
+    <img src="images/foto60.jpg" alt="Foto 60 de nós dois" />
+    <img src="images/foto61.jpg" alt="Foto 61 de nós dois" />
+    <img src="images/foto62.jpg" alt="Foto 62 de nós dois" />
+    <img src="images/foto63.jpg" alt="Foto 63 de nós dois" />
+    <img src="images/foto64.jpg" alt="Foto 64 de nós dois" />
+    <img src="images/foto65.jpg" alt="Foto 65 de nós dois" />
+    <img src="images/foto66.jpg" alt="Foto 66 de nós dois" />
+    <img src="images/foto67.jpg" alt="Foto 67 de nós dois" />
+    <img src="images/foto68.jpg" alt="Foto 68 de nós dois" />
+    <img src="images/foto69.jpg" alt="Foto 69 de nós dois" />
+    <img src="images/foto70.jpg" alt="Foto 70 de nós dois" />
+    <img src="images/foto71.jpg" alt="Foto 71 de nós dois" />
+    <img src="images/foto72.jpg" alt="Foto 72 de nós dois" />
+    <img src="images/foto73.jpg" alt="Foto 73 de nós dois" />
+    <img src="images/foto74.jpg" alt="Foto 74 de nós dois" />
+    <img src="images/foto75.jpg" alt="Foto 75 de nós dois" />
+    <img src="images/foto76.jpg" alt="Foto 76 de nós dois" />
+    <img src="images/foto77.jpg" alt="Foto 77 de nós dois" />
+    <img src="images/foto78.jpg" alt="Foto 78 de nós dois" />
+    <img src="images/foto79.jpg" alt="Foto 79 de nós dois" />
+    <img src="images/foto80.jpg" alt="Foto 80 de nós dois" />
+    <img src="images/foto81.jpg" alt="Foto 81 de nós dois" />
+    <img src="images/foto82.jpg" alt="Foto 82 de nós dois" />
+    <img src="images/foto83.jpg" alt="Foto 83 de nós dois" />
+    <img src="images/foto84.jpg" alt="Foto 84 de nós dois" />
+    <img src="images/foto85.jpg" alt="Foto 85 de nós dois" />
+    <img src="images/foto86.jpg" alt="Foto 86 de nós dois" />
+    </div>
+    </div>
+    <button class="carousel-button right" onclick="nextSlide()">&#10095;</button>
+  </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <h2>Uma História que Deus escreveu!</h2>
+  <br>
+  <br>
+
+  <script src="script/timer.js"></script>
+  <script src="script/carousel.js"></script>
+  <script src="script/music.js"></script>
+  <script src="script/ceu.js"></script>
+  
+
+
+</body>
+</html>
