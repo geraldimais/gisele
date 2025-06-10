@@ -1,4 +1,4 @@
-const startDate = new Date("2021-10-22T00:00:00"); // coloque a data do relacionamento
+const startDate = new Date("2020-06-23T16:52:00"); // coloque a data do relacionamento
 
 function updateTimer() {
   const now = new Date();
