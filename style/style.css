@@ -42,6 +42,46 @@ p {
   text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.2);
 }
 
+p.historia-deus {
+  font-family: 'Alex Brush', cursive;
+  font-size: 1.8em;
+  color: #fff;
+  background: rgba(44, 44, 80, 0.7);
+  padding: 18px 22px;
+  border-radius: 16px;
+  margin: 0 auto 24px auto;
+  max-width: 480px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  line-height: 1.6;
+  text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.5em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .timer {
+    font-size: 1.1em;
+    padding: 15px;
+  }
+
+  .carousel-button {
+    font-size: 1.5rem;
+    padding: 8px;
+  }
+
+  p.historia-deus {
+    font-size: 1.5em;
+    padding: 15px 18px;
+  }
+}
+
 .carousel-container {
   position: relative;
   width: 100%;
@@ -62,12 +102,11 @@ p {
 
 .carousel-track img {
   width: calc(100% / 12); /* divide igualmente o espaço para cada imagem */
-  height: 512px;
+  height: 600px;
   object-fit: cover;
   flex-shrink: 0;
   border-radius: 12px;
 }
-
 
 .carousel-button {
   position: absolute;
@@ -101,27 +140,6 @@ p {
   color: #fff;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
-
-@media (max-width: 600px) {
-  h1 {
-    font-size: 2.5em;
-  }
-
-  h2 {
-    font-size: 1.5em;
-  }
-
-  .timer {
-    font-size: 1.1em;
-    padding: 15px;
-  }
-
-  .carousel-button {
-    font-size: 1.5rem;
-    padding: 8px;
-  }
-}
-
 
 #music-controls {
   margin: 20px 0;
