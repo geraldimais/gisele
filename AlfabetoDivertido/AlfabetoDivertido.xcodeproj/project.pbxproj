@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B10100000000000000000000 /* AlfabetoDivertidoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10100000000000000000000 /* AlfabetoDivertidoApp.swift */; };
+		B10200000000000000000000 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10200000000000000000000 /* Letter.swift */; };
+		B10300000000000000000000 /* LiteracyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10300000000000000000000 /* LiteracyData.swift */; };
+		B10400000000000000000000 /* WordChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10400000000000000000000 /* WordChallenge.swift */; };
+		B10500000000000000000000 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10500000000000000000000 /* SpeechService.swift */; };
+		B10600000000000000000000 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10600000000000000000000 /* HomeView.swift */; };
+		B10700000000000000000000 /* AlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10700000000000000000000 /* AlphabetView.swift */; };
+		B10800000000000000000000 /* LetterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10800000000000000000000 /* LetterDetailView.swift */; };
+		B10900000000000000000000 /* SyllablesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10900000000000000000000 /* SyllablesView.swift */; };
+		B10A00000000000000000000 /* WordBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10A00000000000000000000 /* WordBuilderView.swift */; };
+		B10B00000000000000000000 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10B00000000000000000000 /* QuizView.swift */; };
+		B10C00000000000000000000 /* ActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10C00000000000000000000 /* ActivityCard.swift */; };
+		B10D00000000000000000000 /* BigLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D00000000000000000000 /* BigLetterView.swift */; };
+		C10E00000000000000000000 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10E00000000000000000000 /* Assets.xcassets */; };
+		C10F00000000000000000000 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10F00000000000000000000 /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A10100000000000000000000 /* AlfabetoDivertidoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlfabetoDivertidoApp.swift; sourceTree = "<group>"; };
+		A10200000000000000000000 /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
+		A10300000000000000000000 /* LiteracyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiteracyData.swift; sourceTree = "<group>"; };
+		A10400000000000000000000 /* WordChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordChallenge.swift; sourceTree = "<group>"; };
+		A10500000000000000000000 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
+		A10600000000000000000000 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A10700000000000000000000 /* AlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetView.swift; sourceTree = "<group>"; };
+		A10800000000000000000000 /* LetterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterDetailView.swift; sourceTree = "<group>"; };
+		A10900000000000000000000 /* SyllablesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyllablesView.swift; sourceTree = "<group>"; };
+		A10A00000000000000000000 /* WordBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBuilderView.swift; sourceTree = "<group>"; };
+		A10B00000000000000000000 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		A10C00000000000000000000 /* ActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCard.swift; sourceTree = "<group>"; };
+		A10D00000000000000000000 /* BigLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigLetterView.swift; sourceTree = "<group>"; };
+		A10E00000000000000000000 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A10F00000000000000000000 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A11000000000000000000000 /* AlfabetoDivertido.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlfabetoDivertido.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E10300000000000000000000 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D10100000000000000000000 = {
+			isa = PBXGroup;
+			children = (
+				D10200000000000000000000 /* AlfabetoDivertido */,
+				D10700000000000000000000 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D10200000000000000000000 /* AlfabetoDivertido */ = {
+			isa = PBXGroup;
+			children = (
+				A10100000000000000000000 /* AlfabetoDivertidoApp.swift */,
+				D10300000000000000000000 /* Models */,
+				D10400000000000000000000 /* Services */,
+				D10500000000000000000000 /* Views */,
+				A10E00000000000000000000 /* Assets.xcassets */,
+				D10800000000000000000000 /* Preview Content */,
+			);
+			path = AlfabetoDivertido;
+			sourceTree = "<group>";
+		};
+		D10300000000000000000000 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A10200000000000000000000 /* Letter.swift */,
+				A10300000000000000000000 /* LiteracyData.swift */,
+				A10400000000000000000000 /* WordChallenge.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D10400000000000000000000 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A10500000000000000000000 /* SpeechService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D10500000000000000000000 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A10600000000000000000000 /* HomeView.swift */,
+				A10700000000000000000000 /* AlphabetView.swift */,
+				A10800000000000000000000 /* LetterDetailView.swift */,
+				A10900000000000000000000 /* SyllablesView.swift */,
+				A10A00000000000000000000 /* WordBuilderView.swift */,
+				A10B00000000000000000000 /* QuizView.swift */,
+				D10600000000000000000000 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D10600000000000000000000 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A10C00000000000000000000 /* ActivityCard.swift */,
+				A10D00000000000000000000 /* BigLetterView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D10700000000000000000000 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A11000000000000000000000 /* AlfabetoDivertido.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D10800000000000000000000 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A10F00000000000000000000 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E10100000000000000000000 /* AlfabetoDivertido */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E10600000000000000000000 /* Build configuration list for PBXNativeTarget "AlfabetoDivertido" */;
+			buildPhases = (
+				E10200000000000000000000 /* Sources */,
+				E10300000000000000000000 /* Frameworks */,
+				E10400000000000000000000 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AlfabetoDivertido;
+			productName = AlfabetoDivertido;
+			productReference = A11000000000000000000000 /* AlfabetoDivertido.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E10B00000000000000000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					E10100000000000000000000 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = E10500000000000000000000 /* Build configuration list for PBXProject "AlfabetoDivertido" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = "pt-BR";
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				"pt-BR",
+				Base,
+				en,
+			);
+			mainGroup = D10100000000000000000000;
+			productRefGroup = D10700000000000000000000 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E10100000000000000000000 /* AlfabetoDivertido */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E10400000000000000000000 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C10F00000000000000000000 /* Preview Assets.xcassets in Resources */,
+				C10E00000000000000000000 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E10200000000000000000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10100000000000000000000 /* AlfabetoDivertidoApp.swift in Sources */,
+				B10200000000000000000000 /* Letter.swift in Sources */,
+				B10300000000000000000000 /* LiteracyData.swift in Sources */,
+				B10400000000000000000000 /* WordChallenge.swift in Sources */,
+				B10500000000000000000000 /* SpeechService.swift in Sources */,
+				B10600000000000000000000 /* HomeView.swift in Sources */,
+				B10700000000000000000000 /* AlphabetView.swift in Sources */,
+				B10800000000000000000000 /* LetterDetailView.swift in Sources */,
+				B10900000000000000000000 /* SyllablesView.swift in Sources */,
+				B10A00000000000000000000 /* WordBuilderView.swift in Sources */,
+				B10B00000000000000000000 /* QuizView.swift in Sources */,
+				B10C00000000000000000000 /* ActivityCard.swift in Sources */,
+				B10D00000000000000000000 /* BigLetterView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E10700000000000000000000 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E10800000000000000000000 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E10900000000000000000000 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AlfabetoDivertido/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.AlfabetoDivertido;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E10A00000000000000000000 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AlfabetoDivertido/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.AlfabetoDivertido;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E10500000000000000000000 /* Build configuration list for PBXProject "AlfabetoDivertido" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E10700000000000000000000 /* Debug */,
+				E10800000000000000000000 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E10600000000000000000000 /* Build configuration list for PBXNativeTarget "AlfabetoDivertido" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E10900000000000000000000 /* Debug */,
+				E10A00000000000000000000 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E10B00000000000000000000 /* Project object */;
+}
