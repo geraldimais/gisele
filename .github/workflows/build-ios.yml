@@ -1,0 +1,309 @@
+name: Build iOS App
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+    paths:
+      - "AlfabetoDivertido/**"
+      - ".github/workflows/build-ios.yml"
+  pull_request:
+    paths:
+      - "AlfabetoDivertido/**"
+      - ".github/workflows/build-ios.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: build-ios-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ─────────────────────────────────────────────────────────────────────
+  # Job 1: build para Simulador — NÃO precisa de conta Apple Developer.
+  # Gera um .app dentro de um .zip que roda em qualquer simulador iOS
+  # (util para testes, capturas de tela, previews de PR).
+  # ─────────────────────────────────────────────────────────────────────
+  simulator:
+    name: Simulator build (unsigned)
+    runs-on: macos-14
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: AlfabetoDivertido
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app
+
+      - name: Print environment
+        run: |
+          xcodebuild -version
+          swift --version
+          xcrun simctl list runtimes | grep -i ios || true
+
+      - name: Build for iOS Simulator
+        run: |
+          set -euo pipefail
+          xcodebuild \
+            -project AlfabetoDivertido.xcodeproj \
+            -scheme AlfabetoDivertido \
+            -configuration Release \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build | xcbeautify --renderer github-actions || \
+          xcodebuild \
+            -project AlfabetoDivertido.xcodeproj \
+            -scheme AlfabetoDivertido \
+            -configuration Release \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build
+
+      - name: Package .app
+        id: package
+        run: |
+          set -euo pipefail
+          APP_PATH="build/Build/Products/Release-iphonesimulator/AlfabetoDivertido.app"
+          if [ ! -d "$APP_PATH" ]; then
+            echo "❌ .app não encontrado em $APP_PATH"
+            find build/Build/Products -maxdepth 3 -type d
+            exit 1
+          fi
+          mkdir -p artifacts
+          VERSION="${GITHUB_REF_NAME:-dev}"
+          SHORT_SHA="${GITHUB_SHA:0:7}"
+          NAME="AlfabetoDivertido-${VERSION}-${SHORT_SHA}-simulator"
+          ditto -c -k --sequesterRsrc --keepParent "$APP_PATH" "artifacts/${NAME}.zip"
+          echo "name=${NAME}" >> "$GITHUB_OUTPUT"
+          echo "path=artifacts/${NAME}.zip" >> "$GITHUB_OUTPUT"
+          ls -lh artifacts/
+
+      - name: Upload simulator .app.zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.package.outputs.name }}
+          path: AlfabetoDivertido/${{ steps.package.outputs.path }}
+          retention-days: 90
+
+  # ─────────────────────────────────────────────────────────────────────
+  # Job 2: build para Device (.ipa assinado) — OPCIONAL.
+  # Só roda se os secrets abaixo estiverem configurados no repositório:
+  #   • BUILD_CERTIFICATE_BASE64  — .p12 do certificado Apple, base64
+  #   • P12_PASSWORD              — senha do .p12
+  #   • BUILD_PROVISION_PROFILE_BASE64 — .mobileprovision, base64
+  #   • KEYCHAIN_PASSWORD         — senha temporária do keychain (qualquer)
+  #   • APPLE_TEAM_ID             — Team ID (10 caracteres)
+  #   • PROVISIONING_PROFILE_NAME — nome do perfil (Match/Fastlane) OU
+  #     PROVISIONING_PROFILE_SPECIFIER — specifier direto
+  #   • EXPORT_METHOD             — app-store | ad-hoc | development | enterprise
+  #
+  # Ver README para instruções de setup.
+  # ─────────────────────────────────────────────────────────────────────
+  device:
+    name: Device build (.ipa assinado)
+    runs-on: macos-14
+    timeout-minutes: 30
+    needs: simulator
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') }}
+    defaults:
+      run:
+        working-directory: AlfabetoDivertido
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check signing secrets
+        id: signing
+        env:
+          CERT: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+          PROFILE: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
+          TEAM: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          if [ -n "$CERT" ] && [ -n "$PROFILE" ] && [ -n "$TEAM" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+            echo "✅ Secrets de assinatura configurados. Vou gerar .ipa assinado."
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "⚠️  Secrets de assinatura ausentes."
+            echo "   Adicione BUILD_CERTIFICATE_BASE64, P12_PASSWORD, BUILD_PROVISION_PROFILE_BASE64,"
+            echo "   KEYCHAIN_PASSWORD e APPLE_TEAM_ID no repositório para habilitar o .ipa assinado."
+            echo "   Veja AlfabetoDivertido/README.md → 'Distribuição em dispositivos reais'."
+          fi
+
+      - name: Select Xcode
+        if: steps.signing.outputs.enabled == 'true'
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app
+
+      - name: Install signing certificate
+        if: steps.signing.outputs.enabled == 'true'
+        env:
+          CERT_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+          P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+        run: |
+          set -euo pipefail
+          CERT_PATH="$RUNNER_TEMP/build_certificate.p12"
+          KEYCHAIN_PATH="$RUNNER_TEMP/app-signing.keychain-db"
+          echo -n "$CERT_BASE64" | base64 --decode -o "$CERT_PATH"
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security import "$CERT_PATH" -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN_PATH"
+          security list-keychain -d user -s "$KEYCHAIN_PATH"
+
+      - name: Install provisioning profile
+        if: steps.signing.outputs.enabled == 'true'
+        env:
+          PROFILE_BASE64: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
+        run: |
+          set -euo pipefail
+          PROFILES_DIR="$HOME/Library/MobileDevice/Provisioning Profiles"
+          mkdir -p "$PROFILES_DIR"
+          echo -n "$PROFILE_BASE64" | base64 --decode -o "$PROFILES_DIR/build_pp.mobileprovision"
+
+      - name: Archive
+        if: steps.signing.outputs.enabled == 'true'
+        env:
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          set -euo pipefail
+          xcodebuild \
+            -project AlfabetoDivertido.xcodeproj \
+            -scheme AlfabetoDivertido \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath build/AlfabetoDivertido.xcarchive \
+            DEVELOPMENT_TEAM="$TEAM_ID" \
+            CODE_SIGN_STYLE=Automatic \
+            archive
+
+      - name: Export .ipa
+        if: steps.signing.outputs.enabled == 'true'
+        env:
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          EXPORT_METHOD: ${{ secrets.EXPORT_METHOD || 'ad-hoc' }}
+        run: |
+          set -euo pipefail
+          cat > build/ExportOptions.plist <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>${EXPORT_METHOD}</string>
+            <key>teamID</key>
+            <string>${TEAM_ID}</string>
+            <key>signingStyle</key>
+            <string>automatic</string>
+            <key>stripSwiftSymbols</key>
+            <true/>
+            <key>uploadSymbols</key>
+            <false/>
+            <key>compileBitcode</key>
+            <false/>
+          </dict>
+          </plist>
+          EOF
+          xcodebuild \
+            -exportArchive \
+            -archivePath build/AlfabetoDivertido.xcarchive \
+            -exportPath build/export \
+            -exportOptionsPlist build/ExportOptions.plist
+
+      - name: Rename .ipa
+        if: steps.signing.outputs.enabled == 'true'
+        id: ipa
+        run: |
+          set -euo pipefail
+          IPA=$(find build/export -name '*.ipa' | head -1)
+          if [ -z "$IPA" ]; then
+            echo "❌ .ipa não gerado"
+            ls -la build/export/
+            exit 1
+          fi
+          VERSION="${GITHUB_REF_NAME:-dev}"
+          SHORT_SHA="${GITHUB_SHA:0:7}"
+          NAME="AlfabetoDivertido-${VERSION}-${SHORT_SHA}.ipa"
+          mkdir -p artifacts
+          cp "$IPA" "artifacts/${NAME}"
+          echo "name=${NAME}" >> "$GITHUB_OUTPUT"
+          echo "path=artifacts/${NAME}" >> "$GITHUB_OUTPUT"
+          ls -lh artifacts/
+
+      - name: Upload .ipa
+        if: steps.signing.outputs.enabled == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: AlfabetoDivertido-ipa
+          path: AlfabetoDivertido/${{ steps.ipa.outputs.path }}
+          retention-days: 90
+
+      - name: Cleanup keychain
+        if: always() && steps.signing.outputs.enabled == 'true'
+        run: |
+          security delete-keychain "$RUNNER_TEMP/app-signing.keychain-db" || true
+          rm -f "$HOME/Library/MobileDevice/Provisioning Profiles/build_pp.mobileprovision"
+
+  # ─────────────────────────────────────────────────────────────────────
+  # Job 3: publica os artefatos como GitHub Release quando push de tag v*
+  # ─────────────────────────────────────────────────────────────────────
+  release:
+    name: Publish GitHub Release
+    needs: [simulator, device]
+    if: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+
+      - name: List artifacts
+        run: |
+          find dist -type f -exec ls -lh {} \;
+
+      - name: Create/Update GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Alfabeto Divertido ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
+          draft: false
+          prerelease: ${{ contains(github.ref_name, '-') }}
+          generate_release_notes: true
+          body: |
+            ## 📱 Alfabeto Divertido — ${{ github.ref_name }}
+
+            App iOS SwiftUI para alfabetização infantil em português.
+
+            ### Downloads
+
+            - **`.app.zip`** — build para **iOS Simulator**. Roda em qualquer simulador de iPhone/iPad no Xcode (arraste para o simulador ou use `xcrun simctl install`). Não instala em iPhone físico.
+            - **`.ipa`** *(se assinado)* — build para **iPhone físico**. Requer que o dispositivo esteja incluído no provisioning profile ad-hoc ou que você use TestFlight/App Store. Ver README para setup dos secrets.
+
+            ### Instalação no simulador (macOS)
+
+            ```bash
+            unzip AlfabetoDivertido-*-simulator.zip
+            xcrun simctl boot "iPhone 15"          # ou o simulador desejado
+            xcrun simctl install booted AlfabetoDivertido.app
+            xcrun simctl launch booted com.example.AlfabetoDivertido
+            ```
+
+            ### Instalação em iPhone físico
+
+            - Via **TestFlight** (recomendado): submeta o `.ipa` no App Store Connect.
+            - Via **AltStore/SideStore**: arraste o `.ipa` para o AltStore com sua Apple ID.
+            - Via **Xcode → Devices**: `Window → Devices and Simulators`, arraste o `.ipa`.
+          files: |
+            dist/**/*.zip
+            dist/**/*.ipa
