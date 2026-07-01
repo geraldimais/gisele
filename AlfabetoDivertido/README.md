@@ -17,7 +17,7 @@ App para iPhone (SwiftUI) que ajuda crianças na fase de **alfabetização** a a
 - iOS 17.0+ (iPhone; também roda em iPad)
 - Nenhum pacote externo — 100% frameworks nativos da Apple
 
-## 🚀 Como rodar
+## 🚀 Como rodar (macOS + Xcode)
 
 ```bash
 git clone <URL-do-repositorio>
@@ -30,7 +30,28 @@ No Xcode:
 2. Escolha um simulador de iPhone (ex.: iPhone 15).
 3. Pressione **⌘R** para rodar.
 
+Ou pela linha de comando:
+
+```bash
+xcodebuild -project AlfabetoDivertido.xcodeproj \
+           -scheme AlfabetoDivertido \
+           -destination 'platform=iOS Simulator,name=iPhone 15' \
+           build
+```
+
 Para rodar em um iPhone físico, ajuste o `PRODUCT_BUNDLE_IDENTIFIER` (em *Signing & Capabilities*) para algo único e selecione seu Team de desenvolvedor.
+
+## ✅ Validações sem macOS (Linux/CI)
+
+Requer apenas `swift` 5.9+ no PATH ([Swift para Linux](https://www.swift.org/download/)).
+
+```bash
+./scripts/validate.sh
+```
+
+O script:
+- Roda `swiftc -parse` em cada um dos 13 arquivos `.swift` (checagem sintática completa, sem depender de SwiftUI/UIKit).
+- Compila e executa `AlfabetoDivertidoTests/SmokeTest.swift`, uma suíte com **23 asserções** que exercitam de verdade os modelos (`Letter`, `LiteracyData`, `WordChallenge`) e simulam a lógica do Quiz e do Formar Palavras.
 
 ## 🗂 Estrutura do projeto
 
