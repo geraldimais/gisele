@@ -80,7 +80,9 @@ jobs:
             exit 1
           fi
           mkdir -p artifacts
-          VERSION="${GITHUB_REF_NAME:-dev}"
+          # Sanitiza ref (branches com / viram -) para nome de arquivo/artifact
+          RAW_VERSION="${GITHUB_REF_NAME:-dev}"
+          VERSION="${RAW_VERSION//\//-}"
           SHORT_SHA="${GITHUB_SHA:0:7}"
           NAME="AlfabetoDivertido-${VERSION}-${SHORT_SHA}-simulator"
           ditto -c -k --sequesterRsrc --keepParent "$APP_PATH" "artifacts/${NAME}.zip"
@@ -231,7 +233,8 @@ jobs:
             ls -la build/export/
             exit 1
           fi
-          VERSION="${GITHUB_REF_NAME:-dev}"
+          RAW_VERSION="${GITHUB_REF_NAME:-dev}"
+          VERSION="${RAW_VERSION//\//-}"
           SHORT_SHA="${GITHUB_SHA:0:7}"
           NAME="AlfabetoDivertido-${VERSION}-${SHORT_SHA}.ipa"
           mkdir -p artifacts
